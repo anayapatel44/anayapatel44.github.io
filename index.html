@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Embedded Wolfram Notebook</title>
+</head>
+<body>
+  <h1>My Interactive Wolfram Notebook</h1>
+  <div id="notebook-container"></div>
+  <script src="https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js"></script>
+  <script>
+    WolframNotebookEmbedder.embed(
+      'https://www.wolframcloud.com/obj/51fada55-5e7e-4aa5-a103-2038d28a8b54',
+      document.getElementById('notebook-container')
+    );
+  </script>
+</body>
+</html>
