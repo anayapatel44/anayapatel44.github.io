@@ -2,17 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Embedded Wolfram Notebook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #map-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background: url('Untitled.jpeg') no-repeat center/contain;
+      background-size: contain;
+    }
+    .symbol {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    #video-modal iframe {
+      width: 80%;
+      height: 60%;
+    }
+  </style>
 </head>
 <body>
-  <h1>My Interactive Wolfram Notebook</h1>
-  <div id="notebook-container"></div>
-  <script src="https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js"></script>
+  <div id="map-container">
+    <div class="symbol" style="top: 50%; left: 40%;" onclick="openVideo('video1')"></div>
+    <div class="symbol" style="top: 30%; left: 70%;" onclick="openVideo('video2')"></div>
+  </div>
+  <div id="video-modal" onclick="closeVideo()">
+    <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+  </div>
+
   <script>
-    WolframNotebookEmbedder.embed(
-      'https://www.wolframcloud.com/obj/51fada55-5e7e-4aa5-a103-2038d28a8b54',
-      document.getElementById('notebook-container')
-    );
+    function openVideo(videoId) {
+      const videoModal = document.getElementById('video-modal');
+      const videoFrame = document.getElementById('video-frame');
+      videoFrame.src = videoId === 'video1' 
+        ? 'https://www.youtube.com/embed/yourVideoID1' 
+        : 'https://www.youtube.com/embed/yourVideoID2';
+      videoModal.style.display = 'flex';
+    }
+    function closeVideo() {
+      const videoModal = document.getElementById('video-modal');
+      const videoFrame = document.getElementById('video-frame');
+      videoFrame.src = '';
+      videoModal.style.display = 'none';
+    }
   </script>
 </body>
 </html>
