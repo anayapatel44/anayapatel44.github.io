@@ -14,17 +14,18 @@
       height: 100vh;
       background-color: #f0f0f0;
     }
-    #map-container {
+      #map-container {
       position: relative;
-      width: 1000px;
-      height: 800px;
+      width: 90%; /* Responsive width */
+      max-width: 1000px; /* Set a max width for larger screens */
+      aspect-ratio: 4/3; /* Ensures the map maintains its original aspect ratio */
       background: url('map-no-stars.png') no-repeat center/contain;
       background-size: contain;
     }
     .symbol {
       position: absolute;
-      width: 40px; /* Adjust size */
-      height: 40px; /* Adjust size */
+      width: 5%; /* Symbol size relative to the container */
+      height: 5%;
       cursor: pointer;
     }
     .symbol img {
