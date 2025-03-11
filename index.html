@@ -219,11 +219,12 @@
     }
 
     function closeVideo() {
-      const videoModal = document.getElementById('video-modal');
-      const videoFrame = document.getElementById('video-frame');
-      videoFrame.src = '';
-      videoModal.style.display = 'none';
-    }
+            const videoModal = document.getElementById('video-modal');
+            const videoFrame = document.getElementById('video-frame');
+
+            videoFrame.src = ''; // Clears the video source to stop playback
+            videoModal.style.display = 'none';
+        }
   </script>
 </body>
 </html>
