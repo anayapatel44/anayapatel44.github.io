@@ -8,12 +8,26 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
+      padding: 0;
+      background-color: #f8f8f8;
+      text-align: center;
     }
+    h1 {
+            font-size: 2.5em;
+            color: #800000;
+            margin: 20px 0;
+        }
+    .description {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.2em;
+            color: #444;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
       #map-container {
       position: relative;
       width: 90%; 
@@ -22,17 +36,49 @@
       background: url('map-no-stars.png') no-repeat center/contain;
       background-size: contain;
     }
+    .map {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
     .symbol {
       position: absolute;
       width: 4%; 
       height: 5%;
       cursor: pointer;
     }
-     .symbol img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+       .symbol img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .symbol:hover img {
+            transform: scale(1.2);
+        }
+    .tooltip {
+            display: none;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .symbol:hover .tooltip {
+            display: block;
+        }
+
+        .credits {
+            margin: 30px 0;
+            font-size: 1em;
+            color: #666;
+        }
     #video-modal {
       display: none;
       position: fixed;
@@ -51,6 +97,12 @@
   </style>
 </head>
 <body>
+    <h1>Davidson College Interactive Map</h1>
+
+    <div class="description">
+        <p>Explore Davidson College's campus history by clicking on the symbols below. Each marker will open a video with more information about the site.</p>
+    </div>
+  
   <div id="map-container">
     <div class="symbol" style="top: 48%; left: 64%;" title="Introduction" onclick="openVideo('video1')">
       <img src="star1.png" alt="Symbol 1">
@@ -92,6 +144,10 @@
   <div id="video-modal" onclick="closeVideo()">
     <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
   </div>
+
+   <div class="credits">
+        <p>Created by [Your Name]. Special thanks to Davidson College Archives.</p>
+    </div>
 
   <script>
     function openVideo(videoId) {
